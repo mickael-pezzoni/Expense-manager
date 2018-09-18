@@ -4,7 +4,7 @@
 
 #### Commercial
 * **[GET]** : http://adresse/API/commercial => Retourne tout les commerciaux
-* ** [GET] **: http://adresse/API/commercial/(id) => Retourne le commercial avec l'id indiqué
+* **[GET]** : http://adresse/API/commercial/(id) => Retourne le commercial avec l'id indiqué
 * **[POST]** : http:///adresse/API/commercial => Créer un commercial
 
 #### Logins
