@@ -55,3 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['commercial']["get"] = "commercial";
 $route["commercial/(:num)"]["get"] = "commercial/getById/$1";
 $route['commercial']['post'] = "commercial/postCommercial";
+
+$route['login']['get'] = "login";
+$route['login/(:num)']["get"] = 'login/getById/$1';
+$route['login']['post'] = 'login/postLogin';
