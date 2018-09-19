@@ -25,6 +25,14 @@ class Model_login extends CI_Model{
         return $this->db->get();
     }
 
+    public function getByUserAndPassword($user,$password){
+        $this->db->select("user, password, idType, idLogin")
+            ->from($this->table)
+            ->where("user",$user)
+            ->where("password",$password);
+        return $this->db->get();
+    }
+
     public function postLogin(LoginEntity $login){
         $data = array(
             'user'=>$login->getUser(),
@@ -34,6 +42,11 @@ class Model_login extends CI_Model{
         );
         $this->db->insert($this->table,$data);
 
+    }
+
+    public function deleteById($id){
+        $this->db->where("idLogin",$id)
+            ->delete($this->table);
     }
 
 }

@@ -38,7 +38,23 @@ class Login extends CI_Controller{
         }
         else{
             header("HTTP/1.0 404 Not Found");
-            echo json_encode("404 : commercial #$id not found");
+            echo json_encode("404 : commercial $id not found");
+        }
+    }
+
+    public function checkLogin(){
+
+        $data = array(
+            'user'=>$this->input->post('login',True),
+            'password'=>$this->input->post('pass',True)
+        );
+
+        $data = $this->Model_login->getByUserAndPassword($data['user'],$data['password']);
+        if($data->num_rows() > 0){
+            echo json_encode($data->result());
+        }
+        else{
+            echo json_encode(["err"=>"Bad login"]);
         }
     }
 
@@ -50,10 +66,6 @@ class Login extends CI_Controller{
             'idType'=>$this->input->post('idType',True)
         );
         $this->login = new LoginEntity($tabPost['user'],$tabPost['password'],$tabPost['mail'],$tabPost['idType']);
-        /*echo json_encode($this->login->getUser());
-        echo json_encode($this->login->getMail());
-        echo json_encode($this->login->getPassword());
-        echo json_encode($this->login->getIdType());*/
         if($this->login->checkValue()){
             $this->Model_login->postLogin($this->login);
             echo json_encode("Login created");
@@ -61,6 +73,17 @@ class Login extends CI_Controller{
         else{
             header("HTTP/1.0 400 Bad Request");
             echo json_encode("400: Empty value");
+        }
+    }
+
+    public function deleteById($id){
+        if($this->Model_login->getById($id)->num_rows()>0){
+            $this->Model_login->deleteById($id);
+            echo json_encode("user".$id.' deleted');
+        }
+        else{
+            header("HTTP/1.0 404 Not Found");
+            echo json_encode("404: user $id not found");
         }
     }
 

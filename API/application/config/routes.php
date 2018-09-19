@@ -59,3 +59,5 @@ $route['commercial']['post'] = "commercial/postCommercial";
 $route['login']['get'] = "login";
 $route['login/(:num)']["get"] = 'login/getById/$1';
 $route['login']['post'] = 'login/postLogin';
+$route['login/auth']['post'] = "login/checkLogin";
+$route['login/(:num)']['delete'] = "login/deleteById/$1";
