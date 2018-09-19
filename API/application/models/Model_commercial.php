@@ -29,7 +29,9 @@ class Model_commercial extends CI_Model{
         $data = array(
           "co_nom"=>$commercial->getNom(),
           "co_prenom"=>$commercial->getPrenom(),
-            "email"=>$commercial->getEmail()
+            "email"=>$commercial->getEmail(),
+            "rib"=>$commercial->getRib(),
+            "idLogin"=>$commercial->getIdLogin()
         );
         $this->db->insert($this->table,$data);
     }
