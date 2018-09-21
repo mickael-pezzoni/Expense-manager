@@ -18,14 +18,14 @@ class Model_commercial extends CI_Model{
     }
 
     public function getById($id){
-        $this->db->select("*")
+        $this->db->select("idCommercial,co_Nom,co_Prenom")
             ->from($this->table)
             ->where("idCommercial",$id)
             ->limit(1);
         return $this->db->get();
     }
 
-    public function postCommercial(CommercialEntity $commercial){
+    public  function postCommercial(CommercialEntity $commercial){
         $data = array(
           "co_nom"=>$commercial->getNom(),
           "co_prenom"=>$commercial->getPrenom(),

@@ -16,7 +16,6 @@ class Commercial extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->database();
-        header("Access-Control-Allow-Origin: *");
         $this->load->model("Model_commercial");
     }
 

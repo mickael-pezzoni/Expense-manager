@@ -14,10 +14,9 @@ class CommercialEntity{
     private $prenom = null;
     private $email = null;
     private $id = null;
-    private $idLogin = null;
 
 
-    public function __construct($nom,$prenom,$email,$idLogin, $id=null){
+    public function __construct($nom,$prenom,$email, $id=null){
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->email = $email;
