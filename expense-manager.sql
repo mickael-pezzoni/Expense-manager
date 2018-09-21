@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  lun. 17 sep. 2018 à 15:49
+-- Généré le :  ven. 21 sep. 2018 à 14:36
 -- Version du serveur :  10.1.35-MariaDB
 -- Version de PHP :  7.2.9
 
@@ -34,6 +34,13 @@ CREATE TABLE `Admin` (
   `ad_Prenom` varchar(50) NOT NULL,
   `idLogin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `Admin`
+--
+
+INSERT INTO `Admin` (`idAdmin`, `ad_Nom`, `ad_Prenom`, `idLogin`) VALUES
+(1, 'root', 'rootPrenom', 5);
 
 -- --------------------------------------------------------
 
@@ -72,15 +79,17 @@ CREATE TABLE `Commercial` (
   `co_Nom` varchar(50) NOT NULL,
   `co_Prenom` varchar(50) NOT NULL,
   `rib` varchar(30) NOT NULL,
-  `idLogin` int(11) NOT NULL
+  `idLogin` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `Commercial`
 --
 
-INSERT INTO `Commercial` (`idCommercial`, `co_Nom`, `co_Prenom`, `rib`, `idLogin`) VALUES
-(1, 'Gregoire', 'Mathieu', 'd4sd5q464d', 2);
+INSERT INTO `Commercial` (`idCommercial`, `co_Nom`, `co_Prenom`, `rib`, `idLogin`, `email`) VALUES
+(1, 'Gregoire', 'Mathieu', 'd4sd5q464d', 2, ''),
+(5, 'Test', 'TestP', 'f4fd64df5f54', 4, 'test@test.fr');
 
 -- --------------------------------------------------------
 
@@ -161,7 +170,9 @@ CREATE TABLE `Login` (
 
 INSERT INTO `Login` (`idLogin`, `user`, `password`, `mail`, `idType`) VALUES
 (1, 'micka', '123456', 'mickaelpezzoni@gmail.com', 1),
-(2, 'mathieu', '123456', 'mathieu@greta.com', 3);
+(2, 'mathieu', '123456', 'mathieu@greta.com', 3),
+(4, 'test', 'test', 'toto@toto.fr', 3),
+(5, 'root', 'root', 'root@root.fr', 2);
 
 -- --------------------------------------------------------
 
@@ -307,7 +318,7 @@ ALTER TABLE `typeUtilisateur`
 -- AUTO_INCREMENT pour la table `Admin`
 --
 ALTER TABLE `Admin`
-  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `Client`
@@ -319,7 +330,7 @@ ALTER TABLE `Client`
 -- AUTO_INCREMENT pour la table `Commercial`
 --
 ALTER TABLE `Commercial`
-  MODIFY `idCommercial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idCommercial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `Comptable`
@@ -349,7 +360,7 @@ ALTER TABLE `justificatifs`
 -- AUTO_INCREMENT pour la table `Login`
 --
 ALTER TABLE `Login`
-  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `Remboursement`

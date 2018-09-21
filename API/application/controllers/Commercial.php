@@ -27,7 +27,7 @@ class Commercial extends CI_Controller{
         else{
             header("HTTP/1.0 404 Not Found");
             echo json_encode("404 : Commercial non trouvé");
-        };
+        }
     }
 
     public function getById($id){
@@ -40,7 +40,7 @@ class Commercial extends CI_Controller{
         }
         else{
             header("HTTP/1.0 404 Not Found");
-            echo json_encode("404 : commercial #$id not found");
+            echo json_encode("404 : commercial $id not found");
         }
     }
 
@@ -49,9 +49,11 @@ class Commercial extends CI_Controller{
         $tabPost = array(
             'nom'=>$this->input->post('nom',True),
             'prenom'=>$this->input->post('prenom',True),
-            'email'=>$this->input->post('email',True)
+            'email'=>$this->input->post('email',True),
+            'idLogin'=>$this->input->post('idLogin',True),
+            'rib'=>$this->input->post('rib',True)
         );
-        $this->commercial = new CommercialEntity($tabPost['nom'],$tabPost['prenom'],$tabPost['email']);
+        $this->commercial = new CommercialEntity($tabPost['nom'],$tabPost['prenom'],$tabPost['email'],$tabPost['rib'],$tabPost['idLogin']);
         if($this->commercial->checkValues()){
             $this->Model_commercial->postCommercial($this->commercial);
             echo json_encode('Commercial created');

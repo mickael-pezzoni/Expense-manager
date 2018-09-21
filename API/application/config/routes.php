@@ -54,4 +54,17 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['commercial']["get"] = "commercial";
 $route["commercial/(:num)"]["get"] = "commercial/getById/$1";
+<<<<<<< HEAD
 $route['commercial']['post'] = "commercial/postCommercial";
+=======
+$route['commercial']['post'] = "commercial/postCommercial";
+
+$route['login']['get'] = "login";
+$route['login/(:num)']["get"] = 'login/getById/$1';
+$route['login']['post'] = 'login/postLogin';
+$route['login/auth']['post'] = "login/checkLogin";
+$route['login/(:num)']['delete'] = "login/deleteById/$1";
+
+$route['admin']['get'] = "admin";
+$route['admin/(:num)']['get'] = "admin/getBydId/$1";
+>>>>>>> c08069167e0067f0082f2989865cc659b764bf32
