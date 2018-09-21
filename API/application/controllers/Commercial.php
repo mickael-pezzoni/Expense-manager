@@ -28,7 +28,7 @@ class Commercial extends CI_Controller{
         else{
             header("HTTP/1.0 404 Not Found");
             echo json_encode("404 : Commercial non trouvé");
-        };
+        }
     }
 
     public function getById($id){
@@ -41,7 +41,7 @@ class Commercial extends CI_Controller{
         }
         else{
             header("HTTP/1.0 404 Not Found");
-            echo json_encode("404 : commercial #$id not found");
+            echo json_encode("404 : commercial $id not found");
         }
     }
 
