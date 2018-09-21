@@ -15,9 +15,9 @@ class Login extends CI_Controller{
     private $login = null;
     public function __construct(){
         parent::__construct();
+        header("Access-Control-Allow-Origin: *");
         $this->load->database();
         $this->load->model("Model_login");
-        header("Access-Control-Allow-Origin: *");
     }
 
     public function index(){
@@ -43,7 +43,6 @@ class Login extends CI_Controller{
     }
 
     public function checkLogin(){
-
         $data = array(
             'user'=>$this->input->post('login',True),
             'password'=>$this->input->post('pass',True)
@@ -51,7 +50,11 @@ class Login extends CI_Controller{
 
         $data = $this->Model_login->getByUserAndPassword($data['user'],$data['password']);
         if($data->num_rows() > 0){
-            echo json_encode($data->result());
+            /*
+            foreach ($data->result() as $row){
+                $result [] = $row->user;
+            }*/
+            echo json_encode($data->result()[0]);
         }
         else{
             echo json_encode(["err"=>"Bad login"]);

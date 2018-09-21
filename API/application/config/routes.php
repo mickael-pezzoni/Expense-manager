@@ -61,3 +61,6 @@ $route['login/(:num)']["get"] = 'login/getById/$1';
 $route['login']['post'] = 'login/postLogin';
 $route['login/auth']['post'] = "login/checkLogin";
 $route['login/(:num)']['delete'] = "login/deleteById/$1";
+
+$route['admin']['get'] = "admin";
+$route['admin/(:num)']['get'] = "admin/getBydId/$1";
