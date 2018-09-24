@@ -21,9 +21,9 @@ class Commercial extends CI_Controller{
     }
 
     public function index(){
-        $data = $this->Model_commercial->getAll();
-        if($data->num_rows()>0){
-            echo json_encode($data->result());
+        $commerciaux = $this->Model_commercial->getAll();
+        if($commerciaux->num_rows()>0){
+            echo json_encode($commerciaux->result());
         }
         else{
             header("HTTP/1.0 404 Not Found");
@@ -32,12 +32,9 @@ class Commercial extends CI_Controller{
     }
 
     public function getById($id){
-        $data = $this->Model_commercial->getById($id);
-        if($data->num_rows()>0){
-            foreach ($data->result() as $row){
-                $result[] = array("idComptable"=>intval($row->idCommercial),"nom"=>$row->co_Nom);
-            }
-            echo json_encode($data->result());
+        $commercial = $this->Model_commercial->getById($id);
+        if($commercial->num_rows()>0){
+            echo json_encode($commercial->result()[0]);
         }
         else{
             header("HTTP/1.0 404 Not Found");

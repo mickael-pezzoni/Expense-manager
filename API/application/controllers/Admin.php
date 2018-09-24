@@ -21,9 +21,9 @@ class Admin extends  CI_Controller {
     }
 
     public function index(){
-        $data = $this->Model_admin->getAll();
-        if($data->num_rows()>0){
-            echo json_encode($data->result());
+        $admins = $this->Model_admin->getAll();
+        if($admins->num_rows()>0){
+            echo json_encode($admins->result());
         }
         else{
             header('HTTP/1.0 404 Not Found');
@@ -32,9 +32,9 @@ class Admin extends  CI_Controller {
     }
 
     public function getBydId($id){
-        $data = $this->Model_admin->getById($id);
-        if($data->num_rows()>0){
-            echo json_encode($data->result());
+        $admin = $this->Model_admin->getById($id);
+        if($admin->num_rows()>0){
+            echo json_encode($admin->result()[0]);
         }
         else{
             header("HTTP/1.0 404 Not Found");
@@ -52,6 +52,7 @@ class Admin extends  CI_Controller {
         $this->admin = new AdminEntity($tabPost['nom'],$tabPost['prenom'],$tabPost['idLogin']);
         if($this->admin->checkValue()){
             $this->Model_login->postAdmin($this->admin);
+            echo json_encode("Admin created");
         }
         else{
             header("HTTP/1.0 400 Bad Request");

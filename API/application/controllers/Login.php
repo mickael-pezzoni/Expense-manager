@@ -21,9 +21,9 @@ class Login extends CI_Controller{
     }
 
     public function index(){
-        $data = $this->Model_login->getAll();
-        if($data->num_rows()>0){
-            echo json_encode($data->result());
+        $logins = $this->Model_login->getAll();
+        if($logins->num_rows()>0){
+            echo json_encode($logins->result());
         }
         else{
             header("HTTP/1.0 404 Not Found");
@@ -32,9 +32,9 @@ class Login extends CI_Controller{
     }
 
     public function getById($id){
-        $data = $this->Model_login->getById($id);
-        if($data->num_rows()>0){
-            echo json_encode($data->result());
+        $login = $this->Model_login->getById($id);
+        if($login->num_rows()>0){
+            echo json_encode($login->result());
         }
         else{
             header("HTTP/1.0 404 Not Found");
@@ -50,10 +50,6 @@ class Login extends CI_Controller{
 
         $data = $this->Model_login->getByUserAndPassword($data['user'],$data['password']);
         if($data->num_rows() > 0){
-            /*
-            foreach ($data->result() as $row){
-                $result [] = $row->user;
-            }*/
             echo json_encode($data->result()[0]);
         }
         else{
