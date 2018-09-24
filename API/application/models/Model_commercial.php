@@ -37,6 +37,6 @@ class Model_commercial extends CI_Model{
     }
 
     public function delete($id){
-        $this->db->where("idComemrcial",$id);
+        $this->db->where("idComemrcial",$id)->delte($this->table);
     }
 }

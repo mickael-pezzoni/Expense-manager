@@ -36,6 +36,6 @@ class Model_admin extends  CI_Model{
     }
 
     public function delete($id){
-        $this->db->where("idAdmin",$id);
+        $this->db->where("idAdmin",$id)->delete($this->table);
     }
 }

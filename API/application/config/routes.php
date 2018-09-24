@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
 $route['commercial']["get"] = "commercial";
 $route["commercial/(:num)"]["get"] = "commercial/getById/$1";
 $route['commercial']['post'] = "commercial/postCommercial";
@@ -64,3 +65,7 @@ $route['login/(:num)']['delete'] = "login/deleteById/$1";
 
 $route['admin']['get'] = "admin";
 $route['admin/(:num)']['get'] = "admin/getBydId/$1";
+
+$route['client']['get'] = "client";
+$route['client/(:num)']['get'] = "client/getById/$1";
+$route['client']['post'] = "client/postClient";
